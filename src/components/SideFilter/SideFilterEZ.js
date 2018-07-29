@@ -3,6 +3,17 @@ import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
 import '../../../node_modules/rc-slider/assets/index.css';
 import '../../../node_modules/rc-tooltip/assets/bootstrap.css';
+import Dot from '../DataChart/Dot';
+import data from '../Data/AllSub.json';
+const width = 1000, height = 800;
+
+for (var i = 0; i < data.length; i++) { 
+    data[i]['x'] = 40 + 70 * (i % 13);
+    data[i]['y'] = 740 - (40 + 70 * Math.floor(i / 13));
+    var c = data[i]['avg_gpa'] - 3.3;
+    data[i]['rgb'] = "rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c) +")";
+}
+console.log(data);
 
 
 const marks = {
@@ -51,41 +62,6 @@ console.log(value);
 
 var letters = "ABCDEFGHIJKLM".split("");
 var remains ='NOPQRSTUVWXYZ'.split("");
-
-// var width = 500,
-// height = 400,
-// margins = {top: 40, right: 50, bottom: 40, left: 50},
-// legendClassName = "test-legend-class",
-// legendPosition = 'left',
-// legendOffset = 90,
-// chartSeries = [
-//   {
-//     field: '2.8',
-//     name: '2.8',
-//     color: 'rgb(91, 118, 255)'
-//   },
-//   {
-//     field: '3.1',
-//     name: '3.1',
-//     color: 'rgb(141, 184, 255)'
-//   },
-//   {
-//     field: '3.4',
-//     name: '3.4',
-//     color: 'rgb(181, 238, 240)'
-//   },
-//   {
-//     field: '3.7',
-//     name: '3.7',
-//     color: 'rgb(220, 255, 222)'
-//   },
-//   {
-//     field: '4.0',
-//     name: '4.0',
-//     color: 'rgb(255, 255, 205)'
-//   }
-// ]
-
 
 class SideFilterEZ extends Component {
 
@@ -149,9 +125,48 @@ class SideFilterEZ extends Component {
                 </div>
                 </div>
             </aside>
+
+            <div className="container-fluid">
+                    <Dot width={width} height={height} data={data}/>
+            </div>
         </div>
         )
     }
 };
 
 export default SideFilterEZ;
+
+
+// var width = 500,
+// height = 400,
+// margins = {top: 40, right: 50, bottom: 40, left: 50},
+// legendClassName = "test-legend-class",
+// legendPosition = 'left',
+// legendOffset = 90,
+// chartSeries = [
+//   {
+//     field: '2.8',
+//     name: '2.8',
+//     color: 'rgb(91, 118, 255)'
+//   },
+//   {
+//     field: '3.1',
+//     name: '3.1',
+//     color: 'rgb(141, 184, 255)'
+//   },
+//   {
+//     field: '3.4',
+//     name: '3.4',
+//     color: 'rgb(181, 238, 240)'
+//   },
+//   {
+//     field: '3.7',
+//     name: '3.7',
+//     color: 'rgb(220, 255, 222)'
+//   },
+//   {
+//     field: '4.0',
+//     name: '4.0',
+//     color: 'rgb(255, 255, 205)'
+//   }
+// ]

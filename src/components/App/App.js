@@ -6,7 +6,7 @@ import NavBar from '../NavBar/NavBar';
 import MainContent from '../MainContent/MainContent';
 import HomePage from '../HomePage/HomePage';
 import AllSubjects from '../DataChart/AllSubjects';
-
+import Dot from '../DataChart/Dot';
 
 class App extends Component {
   render() {
@@ -17,8 +17,8 @@ class App extends Component {
         <Router>
         <div >
             <Route exact path="/" component={HomePage} />
-            <Route path='/subject' component={MainContent}/>
-            <Route path='/course' component={AllSubjects}/>
+            <Route exact path='/subject' component={AllSubjects}/>
+            <Route path='/subject/:course' component={AllSubjects}/>
         </div>
         </Router>
       </div>

@@ -16,8 +16,8 @@ class HomePage extends Component {
 
                         <div className="col-sm-12">
                             <h2>About this Visualization</h2> 
-                            <p>"Pain is temporary, but GPA is forever."</p>
-                            <p> It seems to happen all time that we are enrolled in a "hard" 
+                            <p>"Pain is temporary, but GPA is forever."
+                                It seems to happen all time that we are enrolled in a "hard" 
                                 course. At the end of each semester, student struggles to find and register for the "easy course" with a
                                 a nice professor that won't destroy their GPA. This visualization digs deep into the disparity of grades 
                                 between different subjects and courses, using the hybrid approach of a <strong>Drill-Down Story </strong> 
@@ -44,8 +44,8 @@ class HomePage extends Component {
                                     a consistent bubble chart. The intensity of the blue color for each subject or course indicates the different levels of 
                                     average GPA.</p>
                                 <p>The reader can also get further information by hovering over subject or course bubble.  Mouse hovering produces a tooltip 
-                                    showing the complete name and average GPA.</p>
-                                <p>The scenes template provides a consistency so as user move from scene to scene, that scene is setting up the various 
+                                    showing the complete name and average GPA. 
+                                    The scenes template provides a consistency so as user move from scene to scene, that scene is setting up the various 
                                     parameters that control the charts. So if the scene parameter changes state, then that's going to cause the average GPA
                                      parameter to change state. 
                                 </p>

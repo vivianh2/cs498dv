@@ -1,56 +1,83 @@
 import React, { Component } from 'react';
-import data from '../Data/AllSub.json';
 import SideFilterEZ from '../SideFilter/SideFilterEZ';
+import * as d3 from 'd3';
+import Dot from '../DataChart/Dot';
+import data from '../Data/AllSub.json';
+const width = 1000, height = 800;
 
-const width = 1000,
-      height = 780;
-
-
+for (var i = 0; i < data.length; i++) { 
+    data[i]['x'] = 40 + 70 * (i % 13);
+    data[i]['y'] = 740 - (40 + 70 * Math.floor(i / 13));
+    var c = data[i]['avg_gpa'] - 3.3;
+    data[i]['rgb'] = "rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c) +")";
+}
+console.log(data);
 class AllSubjects extends Component{
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //       subjectList: []
-    //     };
-    // }
-
-    // componentWillMount() {
-    //     axios.get('../Data/AllSub.json') // JSON File Path
-    //     .then( response => {
-    //         this.setState({
-    //         subjectList: response.data
-    //       });
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    // }
-
     render() {
         return (
             <div className="be-wrapper">
                 <SideFilterEZ />
-                <div className="container-fluid">
-                    <svg width={width} height={height} className="chart" style={{display: 'block', margin:'auto'}}>
-                        {
-                            data.map((d, i) => {
-                                var c = d.avg_gpa - 3.3;
-                                var x = 40 + 70 * (i % 13);
-                                var y = 40 + 70 * Math.floor(i / 13);
-                                return (
-                                    <g>
-                                        <circle key={i} cx={x} cy={y}
-                                                r={25} fill={"rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c)} />
-                                        <text x={x} y={y} text-anchor="middle" alignment-baseline="middle">{d.subject +" " + d.avg_gpa}</text>
-                                    </g>
-                                );
-                            })
-                        }
-                    </svg>
-                </div>
             </div>
 
         );
+
+
+    /* <svg width={width} height={height} className="chart" style={{display: 'block', margin:'auto'}}>
+        {
+            data.map((d, i) => {
+                var c = d.avg_gpa - 3.3;
+                var x = 40 + 70 * (i % 13);
+                var y = 40 + 70 * Math.floor(i / 13);
+                return (
+                    <g ref={this.circleRef} onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+                        <circle key={i} cx={x} cy={y}
+                                r={25} fill={"rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c)} />
+                        <text x={x} y={y} text-anchor="middle" alignment-baseline="middle"
+                                style={{textDecoration: this.state.hover ? "underline" :  "none"}}>
+                                {d.subject +" " + d.avg_gpa} 
+                        </text>
+                    </g>
+                );
+            })
+        }
+    </svg> */
+    // constructor(props){
+    //     super(props);
+    //     this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
+    //     this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
+    //     this.state = {hover : false, ref : null};
+    // }
+
+    // circleRef = React.createRef();
+
+    // onMouseEnterHandler = () => {
+    //     this.setState({
+    //         hover: true,
+    //         ref: this.circleRef.current
+    //     });
+    //     console.log('enter');
+    // }
+    // onMouseLeaveHandler = () => {
+    //     this.setState({
+    //         hover: false,
+    //         ref: null
+
+    //     });
+    //     console.log('leave');
+    // }
+
+    // componentDidUpdate() {
+    //     d3.selectAll("g")
+    //         .on("mouseover", (d, i) => {
+    //         d3.select(this.circleRef.current)
+    //             .style("cursor", "pointer")
+    //             .style("text-decoration", "underline");
+    //         })
+    //         .on("mouseout", (d, i) => {
+    //         d3.select(this.circleRef.current)
+    //             .style("text-decoration", "none");
+    //         });
+    //   }
     }
 }
 

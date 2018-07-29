@@ -12,7 +12,6 @@ class NavBar extends Component {
                     </div>
                         <ul className="nav navbar-nav be-right-navbar" style={{flexFlow:'row wrap'}}>
                             <li><a href="/subject" className="nav-link active">GPA at UIUC</a></li>
-                            <li><a href="/course" className="nav-link">Course GPA</a></li>
                         </ul>
                 </div>
             </nav>

@@ -9,6 +9,14 @@ export function calcGPA ( data ) {
         + data.d + data.dminus + data.f;
     return quiltyPoint / total;
 }
+export function sortByNum( a, b ){
+        if (a.number>b.number)
+            return 1;
+        if (a.number<b.number)
+            return -1;
+        return 0;
+    }
+
 
 function appendTerm(A , B){
         var out = A;
@@ -32,8 +40,8 @@ function appendTerm(A , B){
 
 
 
-export function processGPA(input,type,val){
-    console.log(input);
+export function processGPA(_input,type,val){
+        const input = JSON.parse(JSON.stringify(_input));
         var output = [];
         if (type === 'semester'){
             output = input.reduce( ( out, i ) => {
@@ -53,18 +61,18 @@ export function processGPA(input,type,val){
                 return out;
             }, []);
 
-        }else if (type === 'prof'){
+        }else if (type === 'class'){
             output = input.reduce( (out, i ) => {
-                var prof = out.filter( yt => yt.instructor == i.instructor );
+                var prof = out.filter( yt => yt.number == i.number );
 
                 if (true){
                     if (prof.length === 0) {
                         out.push(i);
                     }
                     else{
-                        out = out.filter( yt => yt.instructor !== i.instructor );
+                        out = out.filter( yt => yt.number !== i.number );
                         var data = prof[0];
-                        out.push(this.appendTerm(data,i));
+                        out.push(appendTerm(data,i));
                     }
                 }
                 return out;

@@ -77,7 +77,7 @@ export default withTooltip(props => {
             );
           })
         }
- 
+
         </Group>
       </svg>
       {props.tooltipOpen &&

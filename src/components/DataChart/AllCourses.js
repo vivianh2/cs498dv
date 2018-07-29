@@ -3,21 +3,20 @@ import SideFilterEZ from '../SideFilter/SideFilterEZ';
 import * as d3 from 'd3';
 import Dot from '../DataChart/Dot';
 import { processGPA } from '../Data/lib';
-import { transformYearTerm , sortYearTerm ,sortByProf , calcGPA } from '../Data/lib';
+import { transformYearTerm , sortByNum ,sortByProf , calcGPA } from '../Data/lib';
 
 class AllCourses extends Component {
-    
+
     constructor(props){
         super(props);
         this.course = this.props.match.params.course.toUpperCase();
-        this.state = {data:null};
+        this.state = {data:[]};
     }
 
 
     componentDidMount(){
         console.log(this.course)
         var query = this.course.match(/([A-Z]+)/);
-        console.log(typeof(this.course))
         if(query == null){
             this.setState({'prompt': "No results found, Please make sure you entered a correct course and try again!"});
             return;
@@ -40,12 +39,18 @@ class AllCourses extends Component {
             return res.json();
         })
         .then(res => {
-            this.setState({data : res})
-            this.setState({'prompt': "Successfully fetched data. The results are shown in the Charts below."});
-            this.changedMulti(res[0].instructor);
+            return processGPA(res,'class')
+        })
+        .then(res => {
+            return res.map( (iter) => {
+                iter.gpa = calcGPA(iter);
+                return iter;
+            });
+        })
+        .then(res => {
+                console.log(res.sort( sortByNum ));
         })
         .catch(err => console.log(err));
-        console.log(this.data);
 
     }
 

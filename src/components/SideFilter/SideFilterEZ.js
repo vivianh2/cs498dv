@@ -13,7 +13,7 @@ for (var i = 0; i < data.length; i++) {
     var c = data[i]['avg_gpa'] - 3.3;
     data[i]['rgb'] = "rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c) +")";
 }
-console.log(data);
+// console.log(data);
 
 
 const marks = {

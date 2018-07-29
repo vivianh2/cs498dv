@@ -6,11 +6,10 @@ import NavBar from '../NavBar/NavBar';
 import MainContent from '../MainContent/MainContent';
 import HomePage from '../HomePage/HomePage';
 import AllSubjects from '../DataChart/AllSubjects';
-import Dot from '../DataChart/Dot';
+import AllCourses from '../DataChart/AllCourses';
 
 class App extends Component {
   render() {
-    console.log("App");
     return (
       <div>
         <NavBar />
@@ -18,7 +17,7 @@ class App extends Component {
         <div >
             <Route exact path="/" component={HomePage} />
             <Route exact path='/subject' component={AllSubjects}/>
-            <Route path='/subject/:course' component={AllSubjects}/>
+            <Route path='/subject/:course' component={AllCourses}/>
         </div>
         </Router>
       </div>

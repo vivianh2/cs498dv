@@ -7,11 +7,6 @@ import { genRandomNormalPoints } from '@vx/mock-data';
 import { withTooltip, Tooltip } from '@vx/tooltip';
 import { Link } from 'react-router-dom';
 
-const egs = genRandomNormalPoints(600).filter((d, i) => {
-    return i < 600;
-  });
-console.log(egs);
-
 let tooltipTimeout;
 
 
@@ -21,8 +16,6 @@ export default withTooltip(props => {
   const xMax = width;
   const yMax = height - 80;
   if (width < 10) return null;
-
-  console.log(points);
 
   const xScale = scaleLinear({
     domain: [0, 1000],

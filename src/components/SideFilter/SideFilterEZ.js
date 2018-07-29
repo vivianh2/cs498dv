@@ -91,16 +91,21 @@ class SideFilterEZ extends Component {
                     <div className="be-scroller">
                         <div className="aside-content">
                             <div className="content">
-                                <div className="aside-header" style={{height:'200px'}}>
+                                <div className="aside-header" style={{height:'300px'}}>
                                     <button data-target=".aside-nav" data-toggle="collapse" type="button" className="navbar-toggle"><span className="icon mdi mdi-caret-down" /></button><span className="title">Select Filter</span>
-                                    <p className="description">Darker blue represents lower GPA. AKA harder subjects.</p>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <label>Darker blue represents lower GPA. AKA harder subjects.</label>
+                                    <label>Feel free to move the slider on two side to narrow down the subjects within a specific GPA range.</label>
+                                    <label>Hover on the bubble to check more details. Click on the bubble to check all the courses info under that subject.</label>
                                 </div>
                             </div>
 
                             <div className="aside-nav collapse">
                                 <div className="content">
-                                    <div className="form-group" style={{height:'200px'}}>
-                                        <label>Feel free to move the slider on two side to narrow down the subjects within a specific GPA range.</label>
+                                    <div className="form-group" style={{height:'100px'}}>
+                                        
                                         <label>GPA RANGE SELECTION</label>
                                         <div style={style}>
                                             <Range min={2} max={4} step={0.1} onChange={this.changeSlider} marks={marks} defaultValue={[2.5, 4]} tipFormatter={value => `${value}`} />

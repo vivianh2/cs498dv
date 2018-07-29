@@ -64,6 +64,9 @@ var letters = "ABCDEFGHIJKLM".split("");
 var remains ='NOPQRSTUVWXYZ'.split("");
 
 class SideFilterEZ extends Component {
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return (

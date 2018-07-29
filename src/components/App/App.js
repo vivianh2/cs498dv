@@ -7,6 +7,7 @@ import MainContent from '../MainContent/MainContent';
 import HomePage from '../HomePage/HomePage';
 import AllSubjects from '../DataChart/AllSubjects';
 
+
 class App extends Component {
   render() {
     console.log("App");
@@ -15,7 +16,7 @@ class App extends Component {
         <NavBar />
         <Router>
         <div >
-            <Route path="/" component={HomePage} />
+            <Route exact path="/" component={HomePage} />
             <Route path='/subject' component={MainContent}/>
             <Route path='/course' component={AllSubjects}/>
         </div>

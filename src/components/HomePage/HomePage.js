@@ -37,7 +37,7 @@ class HomePage extends Component {
                         </div>
 
                         <div className="col-sm-6">
-                            <h3>Scenes</h3>
+                            <h4>Scenes</h4>
                                 <p> The first scence shows a GPA overview of all the subjects available at UIUC, mainly distinguished by their colors, 
                                     in which subjects with significantly lower average grades have increasing blue hues, After that first scene, the user 
                                     can drill down to see the course average GPA under that subject. In each of these detailed scenes, the user can see 
@@ -51,12 +51,17 @@ class HomePage extends Component {
                                 </p>
                         </div>
                         <div className="col-sm-6">
-                            <h3>Annotations</h3>
-                                <p>Various tooltips, labels and legend is used for messaging. Also there is summary information on the side bar providing further explaination and analysis. </p>
-                            <h3>Parameters</h3>
-                                <p>The main parameter is the average GPA on display. This parameter drives the color of each bubble. </p>
-                            <h3>Triggers</h3>
-                                <p>The main trigger is the selection of subject. The subject selection triggers specific courses bubbles to be loaded in the SVG chart.</p>
+                            <h4>Annotations</h4>
+                                <p>Various tooltips, labels and legend is used for messaging. Also there is guiding information on the side bar providing further explaination. </p>
+                            <h4>Parameters</h4>
+                                <p>The main parameter is the average GPA on display. This parameter drives the color of each bubble. There is also slider on the sidebar. 
+                                    The range of the slider control the current state of what to display. For example, if the user restricts the GPA range from 2.8 to 3.0, only 
+                                    subjects that satisfy that range will be shown on the screen. 
+                                </p>
+                            <h4>Triggers</h4>
+                                <p>The main trigger is the selection of subject. The subject selection triggers different courses bubbles as well as the average GPA parameter 
+                                    to be loaded on the screen. The user event that trigger course bubble and average GPA to change is onClick function. When clicking on the subject bubble, 
+                                    the website will navigate user to the next state. The user can be aware of the available user event through the guiding annotation on the side bar and page navigation.</p>
                             
                         </div>
                     

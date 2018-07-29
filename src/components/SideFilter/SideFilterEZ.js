@@ -98,7 +98,7 @@ class SideFilterEZ extends Component {
                                     <br/>
                                     <label>Darker blue represents lower GPA. AKA harder subjects.</label>
                                     <label>Feel free to move the slider on two side to narrow down the subjects within a specific GPA range.</label>
-                                    <label>Hover on the bubble to check more details. Click on the bubble to check all the courses info under that subject.</label>
+                                    <label><strong>Hover</strong> on the bubble to check more details. <strong>Click </strong>on the bubble to check all the courses info under that subject.</label>
                                 </div>
                             </div>
 

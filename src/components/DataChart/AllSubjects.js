@@ -3,14 +3,8 @@ import SideFilterEZ from '../SideFilter/SideFilterEZ';
 import * as d3 from 'd3';
 import Dot from '../DataChart/Dot';
 import data from '../Data/AllSub.json';
-const width = 1000, height = 800;
 
-for (var i = 0; i < data.length; i++) { 
-    data[i]['x'] = 40 + 70 * (i % 13);
-    data[i]['y'] = 740 - (40 + 70 * Math.floor(i / 13));
-    var c = data[i]['avg_gpa'] - 3.3;
-    data[i]['rgb'] = "rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c) +")";
-}
+
 // console.log(data);
 class AllSubjects extends Component{
     render() {

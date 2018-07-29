@@ -48,13 +48,13 @@ export default withTooltip(props => {
                 fill={d.rgb}
                 left={xScale(d.x)}
                 top={yScale(d.y)}
-                size={1800}
+                size={3000}
                 onMouseEnter={() => event => {
                   if (tooltipTimeout) clearTimeout(tooltipTimeout);
                   props.showTooltip({
                     tooltipLeft: xScale(d.x),
                     tooltipTop: yScale(d.y) + 20,
-                    tooltipData: d.avg_gpa
+                    tooltipData: d
                   });
                 }}
                 onTouchStart={() => event => {
@@ -62,7 +62,7 @@ export default withTooltip(props => {
                   props.showTooltip({
                     tooltipLeft: xScale(d.x),
                     tooltipTop: yScale(d.y) - 30,
-                    tooltipData: d.avg_gpa
+                    tooltipData: d
                   });
                 }}
                 onMouseLeave={() => event => {
@@ -71,7 +71,7 @@ export default withTooltip(props => {
                   }, 300);
                 }}
               />
-                <text x={xScale(d.x)} y={yScale(d.y)} text-anchor="middle" alignment-baseline="middle"> {d.subject}</text>);
+                <text x={xScale(d.x)} y={yScale(d.y)} text-anchor="middle" alignment-baseline="middle"> {d.subject + d.number}</text>);
             </g>
             </Link>
             );
@@ -83,7 +83,8 @@ export default withTooltip(props => {
       {props.tooltipOpen &&
         <Tooltip left={props.tooltipLeft} top={props.tooltipTop}>
           <div>
-            <strong>Average GPA:</strong> {props.tooltipData}
+            <strong>Course Title:</strong> {props.tooltipData.coursetitle}<br/>
+            <strong>Average GPA:</strong> {(''+props.tooltipData.gpa).substr(0,4)}
           </div>
         </Tooltip>}
     </div>

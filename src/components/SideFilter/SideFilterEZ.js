@@ -5,6 +5,7 @@ import '../../../node_modules/rc-slider/assets/index.css';
 import '../../../node_modules/rc-tooltip/assets/bootstrap.css';
 import Dot from '../DataChart/Dot';
 import  _data from '../Data/AllSub.json';
+import Legend from '../DataChart/Legend';
 const width = 1000, height = 800;
 
 
@@ -90,54 +91,56 @@ class SideFilterEZ extends Component {
                     <div className="be-scroller">
                         <div className="aside-content">
                             <div className="content">
-                                <div className="aside-header">
+                                <div className="aside-header" style={{height:'200px'}}>
                                     <button data-target=".aside-nav" data-toggle="collapse" type="button" className="navbar-toggle"><span className="icon mdi mdi-caret-down" /></button><span className="title">Select Filter</span>
-                                    <p className="description">Service description</p>
+                                    <p className="description">Darker blue represents lower GPA. AKA harder subjects.</p>
                                 </div>
                             </div>
+
                             <div className="aside-nav collapse">
                                 <div className="content">
-                                    <div className="form-group">
-                                        <label className="w-100">Origin
-                                            <div>
-
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div className="form-group" style={{height:'60px'}}>
+                                    <div className="form-group" style={{height:'200px'}}>
+                                        <label>Feel free to move the slider on two side to narrow down the subjects within a specific GPA range.</label>
                                         <label>GPA RANGE SELECTION</label>
                                         <div style={style}>
                                             <Range min={2} max={4} step={0.1} onChange={this.changeSlider} marks={marks} defaultValue={[2.5, 4]} tipFormatter={value => `${value}`} />
                                         </div>
                                     </div>
 
-                                    <div className="form-group mb-3">
-                                        <label>Select by Alphabet</label>
-                                        <div className="row mt-1" >
-                                            <div className="col-6" >
-                                                {
-                                                    letters.map( (c,i) => {
-                                                        return (
-                                                            <label className="custom-control custom-checkbox w-100">
-                                                                <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">{c}</span>
-                                                            </label>
-                                                        );
-                                                    })
-                                                }
-                                            </div>
-                                            <div className="col-6">
-                                                {
-                                                    remains.map( (c,i) => {
-                                                        return (
-                                                            <label className="custom-control custom-checkbox w-100">
-                                                                <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">{c}</span>
-                                                            </label>
-                                                        );
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <g className="legend" style={{height:'100px'}} >
+                                        <Legend />
+                                        <br/>
+                                        <br/>
+                                     </g>
+                                    {
+                                    // <div className="form-group mb-3">
+                                    //     <label>Select by Alphabet</label>
+                                    //     <div className="row mt-1" >
+                                    //         <div className="col-6" >
+                                    //             {
+                                    //                 letters.map( (c,i) => {
+                                    //                     return (
+                                    //                         <label className="custom-control custom-checkbox w-100">
+                                    //                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">{c}</span>
+                                    //                         </label>
+                                    //                     );
+                                    //                 })
+                                    //             }
+                                    //         </div>
+                                    //         <div className="col-6">
+                                    //             {
+                                    //                 remains.map( (c,i) => {
+                                    //                     return (
+                                    //                         <label className="custom-control custom-checkbox w-100">
+                                    //                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">{c}</span>
+                                    //                         </label>
+                                    //                     );
+                                    //                 })
+                                    //             }
+                                    //         </div>
+                                    //     </div>
+                                    // </div>
+                                    }
                                 </div>
                             </div>
                         </div>

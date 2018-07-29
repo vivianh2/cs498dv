@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import SideFilterEZ from '../SideFilter/SideFilterEZ';
-import * as d3 from 'd3';
-import Dot from '../DataChart/Dot';
+import SDot from '../DataChart/SDot';
 import { processGPA } from '../Data/lib';
 import { transformYearTerm , sortByNum ,sortByProf , calcGPA } from '../Data/lib';
+
+const width = 1000, height = 800;
 
 class AllCourses extends Component {
 
@@ -49,19 +50,28 @@ class AllCourses extends Component {
         })
         .then(res => {
                 console.log(res.sort( sortByNum ));
-        })
-        .catch(err => console.log(err));
+                var data = res.sort( sortByNum );
+                for (var i = 0; i < data.length; i++) {
+                    data[i]['x'] = 40 + 100 * (i % 10);
+                    data[i]['y'] = 740 - (40 + 100 * Math.floor(i / 10));
+                    var c = data[i]['gpa'] - 3.3;
+                    data[i]['rgb'] = "rgb(" + (160 + 150 * c) + ", " + (210 + 200 * c) + ", " + (250 - 70 * c) +")";
+                }
+                this.setState({data: data})
+                })
+        .catch(err => console.log(err))
 
     }
 
     render() {
         return (
             <div className="be-wrapper">
-                {this.course}
+                <SDot width={width} height={height} data={this.state.data}/>
             </div>
         );
     }
 }
+//<Dot width={width} height={height} data={data}/>
 export default AllCourses;
 
 
